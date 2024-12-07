@@ -17,7 +17,8 @@ To get started with the project, clone the repository and install the required d
 1. Clone the repository
 2. Navigate to the project directory
 3. Install the dependencies using
-```npm install
+```
+npm install
 ```
 
 ## Usage
@@ -31,10 +32,12 @@ Run the tests using:
 npm test
 ```
 
-##Technologies Used
+## Technologies Used
 
 JavaScript: Main programming language used for the calculations.
+
 Jest: Testing framework used for unit testing.
+
 Node.js: JavaScript runtime for executing the project.
 
 
