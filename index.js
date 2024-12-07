@@ -18,5 +18,18 @@ const calculateExpenses = (data) => {
     .reduce((sum, item) => sum + item.total_value, 0);
   console.log("Expenses", expenses)  
 }
+
+const calculateGrossProfitMargin = (data, revenue) => {
+    const sales = data
+      .filter(item => item.account_type === 'sales' && item.value_type === 'debit')
+      .reduce((sum, item) => sum + item.total_value, 0); 
+    const gpm = ((sales / revenue) * 100).toFixed(1);
+    console.log("GPM:" , gpm)
+  };
+
+
 calculateRevenue(records)
 calculateExpenses(records)
+
+const revenue = calculateRevenue(records) 
+calculateGrossProfitMargin(records, revenue) 
