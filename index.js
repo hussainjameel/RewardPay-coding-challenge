@@ -17,7 +17,8 @@ const calculateExpenses = (data) => {
   const expenses = data
     .filter(item => item.account_category === 'expense')
     .reduce((sum, item) => sum + item.total_value, 0);
-  console.log("Expenses", expenses)  
+  console.log("Expenses", expenses)
+  return expenses;  
 }
 
 const calculateGrossProfitMargin = (data, revenue) => {
@@ -30,9 +31,15 @@ const calculateGrossProfitMargin = (data, revenue) => {
     console.log("Gross Profit Margin:" , gpm)
   };
 
+const calculateNetProfitMargin = (revenue, expenses) => {
+    const npm = (((revenue - expenses) / revenue) * 100).toFixed(1);
+    console.log("Net Profit Margin:" , npm)
+}
 
 calculateRevenue(records)
 calculateExpenses(records)
 
 const revenue = calculateRevenue(records) 
+const expenses = calculateExpenses(records)
 calculateGrossProfitMargin(records, revenue) 
+calculateNetProfitMargin(revenue, expenses)
