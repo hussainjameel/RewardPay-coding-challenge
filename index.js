@@ -67,3 +67,11 @@ console.log(`Expenses: ${formatCurrency(expenses)}`);
 console.log(`Gross Profit Margin: ${grossProfitMargin}%`);
 console.log(`Net Profit Margin: ${netProfitMargin}%`);
 console.log(`Working Capital Ratio: ${workingCapitalRatio}%`);
+
+module.exports = {
+    calculateRevenue,
+    calculateExpenses,
+    calculateGrossProfitMargin,
+    calculateNetProfitMargin,
+    calculateWorkingCapitalRatio
+  };
