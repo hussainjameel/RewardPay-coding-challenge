@@ -35,6 +35,27 @@ const calculateNetProfitMargin = (revenue, expenses) => {
     const npm = (((revenue - expenses) / revenue) * 100).toFixed(1);
     console.log("Net Profit Margin:" , npm)
 }
+  
+  const calculateWorkingCapitalRatio = (data) => {
+    const assets = data
+        .filter(item =>
+            item.account_category === 'assets' &&
+            ['current', 'bank', 'current_accounts_receivable'].includes(item.account_type) &&
+             item.value_type === 'debit'
+        )
+        .reduce((sum, item) => sum + item.total_value, 0);
+  
+    const liabilities = data
+      .filter(item =>
+        item.account_category === 'liability' &&
+        ['current', 'current_accounts_payable'].includes(item.account_type) &&
+        item.value_type === 'credit'
+      )
+      .reduce((sum, item) => sum + item.total_value, 0);
+  
+    const wcr = ((assets / liabilities) * 100).toFixed(1);
+    console.log("Working Ratio Capital:", wcr)
+  };
 
 calculateRevenue(records)
 calculateExpenses(records)
@@ -43,3 +64,4 @@ const revenue = calculateRevenue(records)
 const expenses = calculateExpenses(records)
 calculateGrossProfitMargin(records, revenue) 
 calculateNetProfitMargin(revenue, expenses)
+calculateWorkingCapitalRatio(records);
